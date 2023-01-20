@@ -21,15 +21,22 @@ class HomeScreen extends StatelessWidget {
     return  Scaffold(
       
       appBar: AppBar(
-        title: const Text('Peliculas en Cine'),
+        title: const Text('Peliculas en Cine',style:TextStyle(color: Colors.black)),
         centerTitle: true,
         elevation:0,
         actions: [
+          
           IconButton(
             icon: const Icon(Icons.saved_search_outlined,size: 30),
             padding:const EdgeInsets.only(right: 5),
-            onPressed: ()=>showSearch(context: context, delegate: MovieSearchDelegate()),)
-        ],),
+            onPressed: ()=>showSearch(context: context, delegate: MovieSearchDelegate()),),
+            ],
+
+        automaticallyImplyLeading: false,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: ChangeThemeButtonWidget(),
+          )),
       
       
       body: SingleChildScrollView(

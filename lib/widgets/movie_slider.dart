@@ -86,7 +86,7 @@ class _MoviePoster extends StatelessWidget {
     return Container(
         width: 130,
         height: 200,
-        margin: const EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.only(left: 10,right: 10, top: 10),
         child: Column(
           children: [
 
@@ -94,14 +94,28 @@ class _MoviePoster extends StatelessWidget {
               onTap: ()=>Navigator.pushNamed(context, 'details',arguments: movie),
               child: Hero(
                 tag: movie.heroId!,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child:  FadeInImage(
-                    placeholder: const AssetImage('assets/no-image.jpg'), 
-                    image: NetworkImage(movie.fullPosterImage),
-                    width: 130,
-                    height: 190,
-                    fit: BoxFit.cover,),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: 
+                    BorderRadius.all(Radius.circular(20)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        blurRadius:5,
+                        offset:Offset(0, -5)
+                        //spreadRadius:1 
+                  ),
+                ],
+              ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child:  FadeInImage(
+                      placeholder: const AssetImage('assets/no-image.jpg'), 
+                      image: NetworkImage(movie.fullPosterImage),
+                      width: 130,
+                      height: 190,
+                      fit: BoxFit.cover,),
+                  ),
                 ),
               ),
             ),
